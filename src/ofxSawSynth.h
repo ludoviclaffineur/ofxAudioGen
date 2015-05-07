@@ -15,7 +15,7 @@ public:
     ofxSawSynth(){};
     void audioRequested(float * output, int bufferSize, int nChannels);
 private:
-    float mFreq = 440;
+    float mFreq = 500;
     //todo
     //int currentSample=0;
     float mLastSample = 0.0f;

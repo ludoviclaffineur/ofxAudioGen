@@ -37,12 +37,14 @@ public:
 
 class ofxGranularSynth : public ofxAudioSynth{
 public:
+    ofxGranularSynth();
     ofxGranularSynth(string path);
+    bool loadWave(string path);
     void audioRequested(float *output, int bufferSize, int nChannels);
 
 private:
     float getSample();
-    bool loadWave(string path);
+
     vector  <float>* music;
     vector  <Grain*>mGrains ;
     int     mDuration;

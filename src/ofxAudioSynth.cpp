@@ -9,7 +9,7 @@
 #include "ofxAudioSynth.h"
 #include "ofxAudioGenConstants.h"
 
-void ofxAudioSynth::setup(){
+void ofxAudioSynth::init(){
 
     soundStream.setup(2, 0, SAMPLE_RATE, BUFFER_SIZE, 4);
     soundStream.setOutput(this);
@@ -18,7 +18,7 @@ void ofxAudioSynth::setup(){
 
 }
 
-void ofxAudioSynth::addEffect(ofxAudioEffect *effect){
+void ofxAudioSynth::addEffect(ofxAudioEffect effect){
     mEffects.push_back(effect);
 }
 

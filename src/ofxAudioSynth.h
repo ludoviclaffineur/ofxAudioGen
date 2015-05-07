@@ -13,16 +13,17 @@
 
 class ofxAudioSynth : public ofBaseSoundOutput{
 public:
-    virtual void setup();
+    ofxAudioSynth():ofBaseSoundOutput(){};
+    virtual void init();
     void play();
     void stop();
     virtual void audioRequested(float * output, int bufferSize, int nChannels)=0;
-    virtual void addEffect(ofxAudioEffect* effect);
+    virtual void addEffect(ofxAudioEffect effect);
 protected:
     vector <float> lAudio;
     vector <float> rAudio;
     ofSoundStream soundStream;
-    vector <ofxAudioEffect*> mEffects;
+    vector <ofxAudioEffect> mEffects;
 };
 
 

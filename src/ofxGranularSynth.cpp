@@ -19,6 +19,16 @@ ofxGranularSynth::ofxGranularSynth(string path){
     mInitPos  = music->size()/2;
 }
 
+ofxGranularSynth::ofxGranularSynth(){
+    mDuration = 3000;
+    mBlank    = 200;
+    mPosition = 0;
+    mOverlap  = 50;
+    mVolume   = 0.9f;
+    music = new std::vector <float>();
+    mInitPos  = 0;
+}
+
 void ofxGranularSynth::audioRequested(float *output, int bufferSize, int nChannels){
     for (int i=0; i<bufferSize; i++) {
         float sample = getSample();
@@ -73,6 +83,7 @@ bool ofxGranularSynth::loadWave(string path){
             i++;
         }
         myfile.close();
+        mInitPos  = music->size()/2;
         return true;
     }
     else {
