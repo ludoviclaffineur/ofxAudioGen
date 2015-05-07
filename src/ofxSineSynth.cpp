@@ -13,7 +13,7 @@ ofxSineSynth::ofxSineSynth(): mTime(0.0), mRate(1.0), mPhaseOffset(0.0),mCurrent
     for (int i =0; i<=TABLE_SIZE; i++) {
         table.push_back(sin( (TWO_PI * i)/TABLE_SIZE));
     }
-    std::cout << table[0] << "  " << table[table.size()-1] <<endl;
+    //std::cout << table[0] << "  " << table[table.size()-1] <<endl;
 }
 
 void ofxSineSynth::audioRequested(float *output, int bufferSize, int nChannels){

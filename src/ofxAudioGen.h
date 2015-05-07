@@ -7,3 +7,4 @@
 #include "ofxNoiseSynth.h"
 #include "ofxSawSynth.h"
 #include "ofxSineSynth.h"
+#include "ofxGranularSynth.h"
