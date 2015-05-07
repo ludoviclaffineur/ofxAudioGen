@@ -18,3 +18,14 @@ void ofxAudioSynth::setup(){
 
 }
 
+void ofxAudioSynth::addEffect(ofxAudioEffect *effect){
+    mEffects.push_back(effect);
+}
+
+void ofxAudioSynth::stop(){
+    soundStream.stop();
+}
+
+void ofxAudioSynth::play(){
+    soundStream.start();
+}

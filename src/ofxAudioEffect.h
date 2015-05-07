@@ -7,3 +7,7 @@
 //
 
 #pragma once
+
+class ofxAudioEffect{
+    
+};
