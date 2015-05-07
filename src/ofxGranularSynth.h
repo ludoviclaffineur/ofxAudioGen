@@ -41,11 +41,27 @@ public:
     ofxGranularSynth(string path);
     bool loadWave(string path);
     void audioRequested(float *output, int bufferSize, int nChannels);
+    vector  <float>* music;
 
+    void setInitPosition(int delay);
+    int getInitPosition();
+
+    int getDuration();
+    void setDuration(int duration);
+
+    int getOverlap();
+    void setOverlap(int overlap);
+
+    float getVolume();
+    void setVolume(float volume);
+
+    void setBlank(int blank);
+    int getBlank();
+    
 private:
     float getSample();
 
-    vector  <float>* music;
+
     vector  <Grain*>mGrains ;
     int     mDuration;
     int     mBlank;

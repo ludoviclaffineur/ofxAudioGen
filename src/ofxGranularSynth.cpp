@@ -92,6 +92,51 @@ bool ofxGranularSynth::loadWave(string path){
     }
 }
 
+
+int ofxGranularSynth::getDuration(){
+    return mDuration;
+}
+
+void ofxGranularSynth::setDuration(int duration){
+    if(duration>0){
+        mDuration = duration;
+    }
+}
+
+int ofxGranularSynth::getOverlap(){
+    return mOverlap;
+}
+
+void ofxGranularSynth::setBlank(int blank){
+    mBlank = blank;
+}
+
+int ofxGranularSynth::getBlank(){
+    return mBlank;
+}
+
+void ofxGranularSynth::setOverlap(int overlap){
+    mOverlap = overlap;
+}
+
+float ofxGranularSynth::getVolume(){
+    return mVolume;
+}
+
+void ofxGranularSynth::setVolume(float volume){
+    mVolume = volume;
+}
+
+void ofxGranularSynth::setInitPosition(int initPos){
+    //std::cout<<initPos<<std::endl;
+    mInitPos = initPos;
+}
+int ofxGranularSynth::getInitPosition(){
+    return mInitPos;
+}
+
+
+
 // GRAINS
 
 Grain::Grain(std::vector<float>* audioFile, int duration,int blank, int initPos){
