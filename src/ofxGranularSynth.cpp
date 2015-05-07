@@ -8,14 +8,14 @@
 
 #include "ofxGranularSynth.h"
 
-ofxGranularSynth::ofxGranularSynth(){
+ofxGranularSynth::ofxGranularSynth(string path){
     mDuration = 3000;
     mBlank    = 200;
     mPosition = 0;
     mOverlap  = 50;
     mVolume   = 0.9f;
     music = new std::vector <float>();
-    loadWave("/Users/ludoviclaffineur/Documents/MoOS-Framework/sounds/sound15.wav");
+    loadWave(path);
     mInitPos  = music->size()/2;
 }
 
@@ -25,9 +25,7 @@ void ofxGranularSynth::audioRequested(float *output, int bufferSize, int nChanne
         output[i*nChannels    ] = sample;
         output[i*nChannels + 1] = sample;
     }
-
 }
-
 
 float ofxGranularSynth::getSample(){
    float sampleResult = 0.0f;
@@ -82,7 +80,6 @@ bool ofxGranularSynth::loadWave(string path){
         return false;
     }
 }
-
 
 // GRAINS
 

@@ -7,6 +7,7 @@
 //
 
 #pragma once
+
 #include "ofxAudioSynth.h"
 
 class Grain{
@@ -36,14 +37,14 @@ public:
 
 class ofxGranularSynth : public ofxAudioSynth{
 public:
-    ofxGranularSynth();
+    ofxGranularSynth(string path);
     void audioRequested(float *output, int bufferSize, int nChannels);
 
 private:
     float getSample();
     bool loadWave(string path);
-    vector <float>* music;
-    vector <Grain*>mGrains ;
+    vector  <float>* music;
+    vector  <Grain*>mGrains ;
     int     mDuration;
     int     mBlank;
     int     mPosition;
