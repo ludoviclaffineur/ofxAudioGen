@@ -28,6 +28,4 @@ void ofxSquareSynth::audioRequested(float *output, int bufferSize, int nChannels
         output[j*nChannels    ] = sampleOut;
         output[j*nChannels + 1] = sampleOut;
     }
-    //cout<<"ICIIII"<<endl;
-
 }

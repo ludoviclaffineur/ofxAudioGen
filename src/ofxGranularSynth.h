@@ -47,15 +47,15 @@ public:
     int getInitPosition();
 
     int getDuration();
-    void setDuration(int duration);
+    void setDuration(float duration);
 
     int getOverlap();
-    void setOverlap(int overlap);
+    void setOverlap(float overlap);
 
     float getVolume();
     void setVolume(float volume);
 
-    void setBlank(int blank);
+    void setBlank(float blank);
     int getBlank();
     
 private:

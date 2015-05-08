@@ -97,9 +97,11 @@ int ofxGranularSynth::getDuration(){
     return mDuration;
 }
 
-void ofxGranularSynth::setDuration(int duration){
+void ofxGranularSynth::setDuration(float duration){
     if(duration>0){
-        mDuration = duration;
+        float oldDuration = mDuration;
+        mDuration = duration*14000;
+        setOverlap((float)mOverlap/(float)oldDuration);
     }
 }
 
@@ -107,16 +109,17 @@ int ofxGranularSynth::getOverlap(){
     return mOverlap;
 }
 
-void ofxGranularSynth::setBlank(int blank){
-    mBlank = blank;
+void ofxGranularSynth::setBlank(float blank){
+    mBlank = blank * 14000;
 }
 
 int ofxGranularSynth::getBlank(){
     return mBlank;
 }
 
-void ofxGranularSynth::setOverlap(int overlap){
-    mOverlap = overlap;
+void ofxGranularSynth::setOverlap(float overlap){
+        mOverlap = overlap * mDuration;
+
 }
 
 float ofxGranularSynth::getVolume(){
