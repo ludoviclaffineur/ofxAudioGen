@@ -52,7 +52,7 @@ void ofApp::depthCallback(float &bl){
 
 void ofApp::byPassEffects(bool &byPass){
     std::cout<<byPass<<endl;
-    GranularSynth.mEffects[0]->byPass(byPass);
+    //GranularSynth.mEffects[0]->byPass(byPass);
 }
 
 void ofApp::playStop(bool &check){
