@@ -8,3 +8,5 @@
 #include "ofxSawSynth.h"
 #include "ofxSineSynth.h"
 #include "ofxGranularSynth.h"
+
+#include "ofxDelayEffect.h"

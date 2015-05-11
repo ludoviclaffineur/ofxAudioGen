@@ -13,7 +13,7 @@
 class ofxSineSynth : public ofxAudioSynth{
 public:
     ofxSineSynth();
-    void audioRequested(float * output, int bufferSize, int nChannels);
+    void audioOut(float * output, int bufferSize, int nChannels);
 
 private:
     const float TABLE_SIZE = 1470.0f;

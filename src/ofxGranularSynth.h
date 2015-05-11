@@ -10,10 +10,7 @@
 
 #include "ofxAudioSynth.h"
 
-struct samples{
-    float left  = 0;
-    float right = 0;
-};
+
 
 
 
@@ -48,7 +45,7 @@ public:
     ofxGranularSynth();
     ofxGranularSynth(string path);
     bool loadWave(string path);
-    void audioRequested(float *output, int bufferSize, int nChannels);
+    void audioOut(float *output, int bufferSize, int nChannels);
     vector  <float>* music;
 
     void setInitPosition(int delay);

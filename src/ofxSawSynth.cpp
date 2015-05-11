@@ -9,7 +9,7 @@
 #include "ofxSawSynth.h"
 
 
-void ofxSawSynth::audioRequested(float *output, int bufferSize, int nChannels){
+void ofxSawSynth::audioOut(float *output, int bufferSize, int nChannels){
     
     for (int i = 0; i < bufferSize; i++){
         mLastSample += mIncrement;

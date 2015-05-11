@@ -14,6 +14,9 @@ class ofApp : public ofBaseApp{
 
     void blankCallback(float& bl);
     void overlapCallback(float& bl);
+    void depthCallback(float& bl);
+    void mixCallback(float& bl);
+    void byPassEffects(bool &byPass);
     
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -32,9 +35,16 @@ class ofApp : public ofBaseApp{
         ofxGranularSynth   GranularSynth;
         //ofMatrixStack test;
         ofxFloatSlider mSliderGrainLength;
+    
+    ofxFloatSlider mSliderDepth;
+    ofxFloatSlider mSliderMix;
+
         ofxFloatSlider mSliderOverlap;
         ofxFloatSlider mSliderBlank;
         ofxToggle mTogglePlaySound;
+
+        ofxToggle mToggleByPassEffect;
+    ofxDelayEffect* delay;
     ofTrueTypeFont mytext;
     ofxPanel gui;
     int increment;

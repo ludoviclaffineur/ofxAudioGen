@@ -12,5 +12,5 @@
 class ofxNoiseSynth : public ofxAudioSynth{
 public:
     ofxNoiseSynth(){};
-    void audioRequested(float * output, int bufferSize, int nChannels);
+    void audioOut(float * output, int bufferSize, int nChannels);
 };

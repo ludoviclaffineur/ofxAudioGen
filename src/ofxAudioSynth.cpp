@@ -15,10 +15,9 @@ void ofxAudioSynth::init(){
     soundStream.setOutput(this);
     //soundStream.
     cout<<"SOUNDSTREAM SETUP"<<endl;
-
 }
 
-void ofxAudioSynth::addEffect(ofxAudioEffect effect){
+void ofxAudioSynth::addEffect(ofxAudioEffect* effect){
     mEffects.push_back(effect);
 }
 

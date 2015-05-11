@@ -11,7 +11,7 @@
 
 
 
-void ofxSquareSynth::audioRequested(float *output, int bufferSize, int nChannels){
+void ofxSquareSynth::audioOut(float *output, int bufferSize, int nChannels){
     static int sampleOut = 1;
     static int  i =0;
     for (int j = 0; j < bufferSize; j++){

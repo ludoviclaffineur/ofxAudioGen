@@ -29,12 +29,17 @@ ofxGranularSynth::ofxGranularSynth(){
     mInitPos  = 0;
 }
 
-void ofxGranularSynth::audioRequested(float *output, int bufferSize, int nChannels){
+void ofxGranularSynth::audioOut(float *output, int bufferSize, int nChannels){
     for (int i=0; i<bufferSize; i++) {
         samples sample = getSample();
+
+        for (int j =0; j<mEffects.size(); j++) {
+            sample = mEffects[j]->process( sample);
+        }
         output[i*nChannels    ] = sample.left;
         output[i*nChannels + 1] = sample.right;
     }
+
 }
 
 samples ofxGranularSynth::getSample(){

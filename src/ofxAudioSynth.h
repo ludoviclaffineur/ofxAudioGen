@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "ofxAudioEffect.h"
+#include "ofxAudioGenConstants.h"
 
 class ofxAudioSynth : public ofBaseSoundOutput{
 public:
@@ -17,11 +18,12 @@ public:
     virtual void init();
     void play();
     void stop();
-    virtual void audioRequested(float * output, int bufferSize, int nChannels)=0;
-    virtual void addEffect(ofxAudioEffect effect);
+    virtual void audioOut(float * output, int bufferSize, int nChannels)=0;
+    virtual void addEffect(ofxAudioEffect* effect);
+    vector <ofxAudioEffect*> mEffects;
 protected:
     ofSoundStream soundStream;
-    vector <ofxAudioEffect> mEffects;
+
 };
 
 

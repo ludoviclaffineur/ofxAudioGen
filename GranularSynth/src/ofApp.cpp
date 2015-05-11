@@ -5,9 +5,14 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     gui.setup();
     mTogglePlaySound.addListener(this, &ofApp::playStop);
+
+    mToggleByPassEffect.addListener(this, &ofApp::byPassEffects);
     mSliderGrainLength.addListener(this, &ofApp::grainLenth);
     mSliderBlank.addListener(this, &ofApp::blankCallback);
     mSliderOverlap.addListener(this, &ofApp::overlapCallback);
+
+    mSliderDepth.addListener(this, &ofApp::depthCallback);
+    mSliderMix.addListener(this, &ofApp::mixCallback);
 
     gui.add(mTogglePlaySound.setup("Play", false));
     gui.add(mSliderGrainLength.setup("grain_size", 0.3,0,1));
@@ -16,16 +21,38 @@ void ofApp::setup(){
 
     gui.add(mSliderOverlap.setup("Overlap", 0.3,0,1));
 
+
+
     GranularSynth.loadWave("../../../data/stereo.wav");
+    delay = new ofxDelayEffect(1000,0.9, 10000);
+    GranularSynth.addEffect(delay);
+    GranularSynth.addEffect(new ofxDelayEffect(1000,0.9, 10000));
     GranularSynth.init();
     GranularSynth.stop();
     increment = GranularSynth.music->size() / 1000;
     if(increment%2 == 1){
         increment++;
     }
+
+    gui.add(mSliderMix.setup("mix", 0.3,0,1));
+    gui.add(mSliderDepth.setup("depth", 0,0,20000));
+    gui.add(mToggleByPassEffect.setup("byPassEffect", false));
     mytext.loadFont("Calibri", 20);
 
-    ofSetFrameRate(60);
+    ofSetFrameRate(20);
+}
+
+void ofApp::mixCallback(float &bl){
+    delay->mMix = bl;
+}
+
+void ofApp::depthCallback(float &bl){
+    delay->mDepth = bl;
+}
+
+void ofApp::byPassEffects(bool &byPass){
+    std::cout<<byPass<<endl;
+    GranularSynth.mEffects[0]->byPass(byPass);
 }
 
 void ofApp::playStop(bool &check){
@@ -51,7 +78,7 @@ void ofApp::overlapCallback(float &bl){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    //delay->mDepth++;
 }
 
 //--------------------------------------------------------------

@@ -13,7 +13,7 @@
 class ofxSawSynth : public ofxAudioSynth{
 public:
     ofxSawSynth(){};
-    void audioRequested(float * output, int bufferSize, int nChannels);
+    void audioOut(float * output, int bufferSize, int nChannels);
 private:
     float mFreq = 500;
     //todo

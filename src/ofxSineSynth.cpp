@@ -16,7 +16,7 @@ ofxSineSynth::ofxSineSynth(): mTime(0.0), mRate(1.0), mPhaseOffset(0.0),mCurrent
     //std::cout << table[0] << "  " << table[table.size()-1] <<endl;
 }
 
-void ofxSineSynth::audioRequested(float *output, int bufferSize, int nChannels){
+void ofxSineSynth::audioOut(float *output, int bufferSize, int nChannels){
     for (int i=0; i<bufferSize; i++) {
         if (mCurrentSamplePosition > TABLE_SIZE) {
             mCurrentSamplePosition = mCurrentSamplePosition - TABLE_SIZE - 1;
