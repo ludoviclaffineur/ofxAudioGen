@@ -25,8 +25,8 @@ void ofApp::setup(){
 
     GranularSynth.loadWave("../../../data/stereo.wav");
     delay = new ofxDelayEffect(1000,0.9, 10000);
-    GranularSynth.addEffect(delay);
-    GranularSynth.addEffect(new ofxDelayEffect(1000,0.9, 10000));
+//    GranularSynth.addEffect(delay);
+//    GranularSynth.addEffect(new ofxDelayEffect(1000,0.9, 10000));
     GranularSynth.init();
     GranularSynth.stop();
     increment = GranularSynth.music->size() / 1000;
