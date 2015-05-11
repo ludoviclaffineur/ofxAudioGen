@@ -16,10 +16,13 @@ void ofApp::setup(){
 
     gui.add(mSliderOverlap.setup("Overlap", 0.3,0,1));
 
-    GranularSynth.loadWave("../../../data/sound15.wav");
+    GranularSynth.loadWave("../../../data/stereo.wav");
     GranularSynth.init();
     GranularSynth.stop();
     increment = GranularSynth.music->size() / 1000;
+    if(increment%2 == 1){
+        increment++;
+    }
     mytext.loadFont("Calibri", 20);
 
     ofSetFrameRate(60);
@@ -55,14 +58,24 @@ void ofApp::update(){
 void ofApp::draw(){
     ofBackground(0, 0, 0);
     int j =0;
+
     for (int i =0 ; i<GranularSynth.music->size()-increment; j++ ,i+=increment) {
         ofLine(j,
-               500+ GranularSynth.music->at(i)*200.0,
+               300+ GranularSynth.music->at(i)*100.0,
                j+1,
-               500+ GranularSynth.music->at(i+increment)*200.0);
+               300+ GranularSynth.music->at(i+increment)*100.0);
     }
+    j=0;
+
+    for (int i =1 ; i<GranularSynth.music->size()-increment; j++ ,i+=increment) {
+        ofLine(j,
+                500+ GranularSynth.music->at(i)*100.0,
+                j+1,
+                500+ GranularSynth.music->at(i+increment)*100.0);
+    }
+
     ofNoFill();
-    ofRect(GranularSynth.getInitPosition()/(float)increment, 300, 10000/increment, 400);
+    ofRect(GranularSynth.getInitPosition()/(float)increment, 200, 10000/increment, 400);
     mytext.drawString("Granular synthesiser", ofGetWindowSize().x/2, 40);
 
     mytext.drawString("Ludovic LAFFINEUR", ofGetWindowSize().x/2, 80);

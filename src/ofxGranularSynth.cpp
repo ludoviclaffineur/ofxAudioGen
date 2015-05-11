@@ -31,65 +31,79 @@ ofxGranularSynth::ofxGranularSynth(){
 
 void ofxGranularSynth::audioRequested(float *output, int bufferSize, int nChannels){
     for (int i=0; i<bufferSize; i++) {
-        float sample = getSample();
-        output[i*nChannels    ] = sample;
-        output[i*nChannels + 1] = sample;
+        samples sample = getSample();
+        output[i*nChannels    ] = sample.left;
+        output[i*nChannels + 1] = sample.right;
     }
 }
 
-float ofxGranularSynth::getSample(){
-   float sampleResult = 0.0f;
-
-   if(mGrains.size()==0 || mPosition++ > (mGrains[mGrains.size()-1]->mDuration + mGrains[mGrains.size()-1]->mBlank - mOverlap)){
-       if(mDuration >mOverlap){
-           mGrains.push_back(new Grain(music, mDuration, mBlank, mInitPos));
-       }
-       mPosition = 0.0f;
-   }
-   if (mGrains.size()!=0) {
-       if (mGrains[0]->isDone()){
-           //std::cout<<"DELETE"<<std::endl;
-           delete *mGrains.begin();
-           mGrains.erase(mGrains.begin());
-       }
-       for(int i =0; i<mGrains.size();i++) {
-           sampleResult += mGrains[i]->getSample();
-       }
-   }
-   else{
-       sampleResult = 0.0f;
-   }
-   return sampleResult;
+samples ofxGranularSynth::getSample(){
+   //float sampleResult = 0.0f;
+    samples sampleResult;
+    if(mGrains.size()==0 || mPosition++ > (mGrains[mGrains.size()-1]->mDuration + mGrains[mGrains.size()-1]->mBlank - mOverlap)){
+        if(mDuration >mOverlap){
+            mGrains.push_back(new Grain(music, mDuration, mBlank, mInitPos,mChannel));
+        }
+        mPosition = 0.0f;
+    }
+    if (mGrains.size()!=0) {
+        if (mGrains[0]->isDone()){
+            //std::cout<<"DELETE"<<std::endl;
+            delete *mGrains.begin();
+            mGrains.erase(mGrains.begin());
+        }
+        for(int i =0; i<mGrains.size();i++) {
+            samples retour = mGrains[i]->getSample();
+            sampleResult.right += retour.right;
+            sampleResult.left += retour.left;
+        }
+    }
+    else{
+        sampleResult.right = sampleResult.left = 0.0f;
+    }
+    return sampleResult;
 }
 
 bool ofxGranularSynth::loadWave(string path){
-    std::ifstream myfile(path.c_str());
-    if (myfile.is_open())
-    {
-        int sample = 0;
-        u_char ubyte;
-        unsigned char lbyte;
-        int  i =0;
-        while ( myfile.read(reinterpret_cast<char*>(&lbyte), 1))
-        {
-            if (i%2 == 0) {//upper
-                sample = (short) (lbyte);
-            }
-            else{
-                sample+= (short)(lbyte<<8);
-                //mAudioWave.push_back((sample));
-                music->push_back((float)(sample)/(float)INT16_MAX);
-            }
-            i++;
-        }
-        myfile.close();
-        mInitPos  = music->size()/2;
-        return true;
-    }
-    else {
-        std::cout << "Unable to open file";
+    FILE *fp;
+    fp = fopen(path.c_str(),"rb");
+    if (fp == NULL){
+        std::cout<<"path fichier faux"<<std::endl;
+        throw std::logic_error( "Audio Wave not found" );
         return false;
     }
+    fread(wh.riff, 4, 1, fp);
+    fread(&wh.size, 4, 1, fp);
+    fread(wh.wave,  4, 1, fp);
+    fread(wh.fmt, 4  , 1, fp);
+    fread(&wh.length, 4,1,fp);
+    fread(&wh.encoding, 2,1,fp);
+    fread(&wh.channels, 2,1,fp);
+    fread(&wh.frequency, 4,1,fp);
+    fread(&wh.byterate, 4,1,fp);
+    fread(&wh.block_align, 2,1,fp);
+    fread(&wh.bits_per_samples, 2,1,fp);
+    fread(wh.data, 4, 1, fp);
+    fread(&wh.data_size,4,1,fp);
+    wh.NumSamples= ((wh.data_size*8)/wh.bits_per_samples)/wh.channels;
+    //mSound = new float[wh.NumSamples];
+    int count = 0;
+    std::cout<< wh.channels <<endl;
+    short int b = 0;
+
+    while(count <wh.NumSamples){
+        fread(&b,1,2,fp);
+        music->push_back((b)/(float)INT16_MAX);
+        //mSound[count]= (b/(float)INT16_MAX);
+        if(wh.channels==2){
+            fread(&b,1,2,fp);
+            music->push_back((b)/(float)INT16_MAX);
+        }
+        count++;
+    }
+    mChannel = wh.channels;
+    mInitPos  = music->size()/2;
+    return true;
 }
 
 
@@ -142,29 +156,43 @@ int ofxGranularSynth::getInitPosition(){
 
 // GRAINS
 
-Grain::Grain(std::vector<float>* audioFile, int duration,int blank, int initPos){
+Grain::Grain(std::vector<float>* audioFile, int duration,int blank, int initPos, int channels){
     mDuration = duration;
     mWindowSize = 10000;
     mCurrentPostion=0;
     mAudioFile = audioFile;
     //std::cout<<initPos<<std::endl;
     mInitPostion = (initPos + rand()%mWindowSize)%(audioFile->size()-mDuration);
+    if(mInitPostion%channels == 1){
+        mInitPostion --;
+    }
     mBlank = blank;
     done = false;
+    mChannels = channels;
 }
 
-float Grain::getSample(){
+samples Grain::getSample(){
+    samples current_sample;
     float sample = 0.0f;
     if (mCurrentPostion <mDuration) {
         float hanningCoeff = 0.5 - 0.5* cosf(2*M_PI *(float)mCurrentPostion/(float)(mDuration));
-        sample = mAudioFile->at(mInitPostion+mCurrentPostion)*hanningCoeff;
+        if(mChannels == 1){
+            current_sample.right = mAudioFile->at(mInitPostion+mCurrentPostion)*hanningCoeff;
+            current_sample.left  = mAudioFile->at(mInitPostion+mCurrentPostion)*hanningCoeff;
+        }
+        else if(mChannels == 2){
+            current_sample.left = mAudioFile->at(mInitPostion+mCurrentPostion*mChannels    )*hanningCoeff;
+            current_sample.right  = mAudioFile->at(mInitPostion+mCurrentPostion*mChannels + 1)*hanningCoeff;
+        }
+
     }
     else if(mCurrentPostion< mDuration+ mBlank){
-        sample = 0.0f;
+        current_sample.left = 0.0f;
+        current_sample.right = 0.0f;
     }
     else{
         done = true;
     }
     mCurrentPostion++;
-    return sample;
+    return current_sample;
 }

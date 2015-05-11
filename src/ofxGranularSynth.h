@@ -10,10 +10,17 @@
 
 #include "ofxAudioSynth.h"
 
+struct samples{
+    float left  = 0;
+    float right = 0;
+};
+
+
+
 class Grain{
 public:
-    Grain(std::vector<float>* audioFile, int duration, int blank,int initPos);
-    float getSample();
+    Grain(std::vector<float>* audioFile, int duration, int blank,int initPos, int channels);
+    samples getSample();
     enum ENVELOPE{
         ATTACK=0,
         DELAY,
@@ -32,6 +39,7 @@ public:
     bool done;
     int mBlank;
     int mWindowSize;
+    int mChannels;
 };
 
 
@@ -57,9 +65,29 @@ public:
 
     void setBlank(float blank);
     int getBlank();
-    
+
+
+    struct wave_header {
+        char riff[4];
+        uint_least32_t size;
+        char wave[4];
+        char fmt[4];
+        uint_least32_t length;
+        uint_least16_t encoding;
+        uint_least16_t channels;
+        uint_least32_t frequency;
+        uint_least32_t byterate;
+        uint_least16_t block_align;
+        uint_least16_t bits_per_samples;
+        char data[4];
+        uint_least32_t data_size;
+        int NumSamples;
+
+    } wh;
+
+    int mChannel;
 private:
-    float getSample();
+    samples getSample();
 
 
     vector  <Grain*>mGrains ;
