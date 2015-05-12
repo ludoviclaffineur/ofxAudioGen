@@ -10,25 +10,21 @@ void ofApp::setup(){
     mSliderGrainLength.addListener(this, &ofApp::grainLenth);
     mSliderBlank.addListener(this, &ofApp::blankCallback);
     mSliderOverlap.addListener(this, &ofApp::overlapCallback);
-
     mSliderDepth.addListener(this, &ofApp::depthCallback);
     mSliderMix.addListener(this, &ofApp::mixCallback);
 
     gui.add(mTogglePlaySound.setup("Play", false));
     gui.add(mSliderGrainLength.setup("grain_size", 0.3,0,1));
-
     gui.add(mSliderBlank.setup("Blank", 0.3,0,1));
-
     gui.add(mSliderOverlap.setup("Overlap", 0.3,0,1));
-
-
-
     GranularSynth.loadWave("../../../data/stereo.wav");
+
     delay = new ofxDelayEffect(1000,0.9, 10000);
-//    GranularSynth.addEffect(delay);
-//    GranularSynth.addEffect(new ofxDelayEffect(1000,0.9, 10000));
+    GranularSynth.addEffect(delay);
+
     GranularSynth.init();
     GranularSynth.stop();
+    
     increment = GranularSynth.music->size() / 1000;
     if(increment%2 == 1){
         increment++;
@@ -52,7 +48,7 @@ void ofApp::depthCallback(float &bl){
 
 void ofApp::byPassEffects(bool &byPass){
     std::cout<<byPass<<endl;
-    //GranularSynth.mEffects[0]->byPass(byPass);
+    GranularSynth.mEffects[0]->byPass(byPass);
 }
 
 void ofApp::playStop(bool &check){
@@ -112,7 +108,6 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
-
 }
 
 //--------------------------------------------------------------
@@ -135,8 +130,6 @@ void ofApp::mousePressed(int x, int y, int button){
     if (x>0 && x<1000 && y<700 && y>300) {
         GranularSynth.setInitPosition(x*increment);
     }
-
-
 }
 
 //--------------------------------------------------------------

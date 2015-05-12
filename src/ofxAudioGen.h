@@ -10,3 +10,6 @@
 #include "ofxGranularSynth.h"
 
 #include "ofxDelayEffect.h"
+
+#include "ofxMicroInput.h"
+#include "ofxGranulateEffect.h"
