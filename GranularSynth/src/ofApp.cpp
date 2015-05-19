@@ -17,7 +17,10 @@ void ofApp::setup(){
     gui.add(mSliderGrainLength.setup("grain_size", 0.3,0,1));
     gui.add(mSliderBlank.setup("Blank", 0.3,0,1));
     gui.add(mSliderOverlap.setup("Overlap", 0.3,0,1));
+    //GranularSynth.loadWave("../../../data/Whyyyyy_1.wav");
+
     GranularSynth.loadWave("../../../data/stereo.wav");
+
 
     delay = new ofxDelayEffect(1000,0.9, 10000);
     GranularSynth.addEffect(delay);
@@ -25,7 +28,7 @@ void ofApp::setup(){
     GranularSynth.init();
     GranularSynth.stop();
     
-    increment = GranularSynth.music->size() / 1000;
+    increment = GranularSynth.musicSize / 1000;
     if(increment%2 == 1){
         increment++;
     }
@@ -35,7 +38,7 @@ void ofApp::setup(){
     gui.add(mToggleByPassEffect.setup("byPassEffect", false));
     mytext.loadFont("Calibri", 20);
 
-    ofSetFrameRate(20);
+    ofSetFrameRate(10);
 }
 
 void ofApp::mixCallback(float &bl){
@@ -75,6 +78,7 @@ void ofApp::overlapCallback(float &bl){
 //--------------------------------------------------------------
 void ofApp::update(){
     //delay->mDepth++;
+    GranularSynth.setInitPosition((rand()%GranularSynth.musicSize));
 }
 
 //--------------------------------------------------------------
@@ -82,19 +86,19 @@ void ofApp::draw(){
     ofBackground(0, 0, 0);
     int j =0;
 
-    for (int i =0 ; i<GranularSynth.music->size()-increment; j++ ,i+=increment) {
+    for (int i =0 ; i<GranularSynth.musicSize-increment; j++ ,i+=increment) {
         ofLine(j,
-               300+ GranularSynth.music->at(i)*100.0,
+               300+ GranularSynth.music[i]*100.0,
                j+1,
-               300+ GranularSynth.music->at(i+increment)*100.0);
+               300+ GranularSynth.music[i+increment]*100.0);
     }
     j=0;
 
-    for (int i =1 ; i<GranularSynth.music->size()-increment; j++ ,i+=increment) {
+    for (int i =1 ; i<GranularSynth.musicSize- increment; j++ ,i+=increment) {
         ofLine(j,
-                500+ GranularSynth.music->at(i)*100.0,
+                500+ GranularSynth.music[i]*100.0,
                 j+1,
-                500+ GranularSynth.music->at(i+increment)*100.0);
+                500+ GranularSynth.music[i+increment]*100.0);
     }
 
     ofNoFill();

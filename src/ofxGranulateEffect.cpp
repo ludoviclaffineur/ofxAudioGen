@@ -8,23 +8,31 @@
 
 #include "ofxGranulateEffect.h"
 
-ofxGranulateEffect::ofxGranulateEffect():bufferGranulate(200000,0.0f){
-    mChannel = 2;
-    mDuration = 1500;
+ofxGranulateEffect::ofxGranulateEffect(){
+    mChannel = 1;
+    mDuration = 3000;
     mBlank    = 0;
     mPosition = 0;
     mOverlap  = 200;
     mVolume   = 0.9f;
 }
 
+void ofxGranulateEffect::setBuffer(float* buffer, int size){
+    bufferGranulate = buffer;
+    mSize = size;
+}
+
+
 samples ofxGranulateEffect::process(samples sample){
-    bufferGranulate.push_back(sample.left);
-    bufferGranulate.push_back(sample.right);
+    //bufferGranulate.push_back(sample.left);
+    //bufferGranulate.push_back(sample.right);
 
     samples sampleResult;
     if(mGrains.size()==0 || mPosition++ > (mGrains[mGrains.size()-1]->mDuration + mGrains[mGrains.size()-1]->mBlank - mOverlap)){
         if(mDuration >mOverlap){
-            mGrains.push_back(new GrainEffect(bufferGranulate, mDuration, mBlank, mInitPos,mChannel));
+            //std::cout<< "NEW GRAIN" << std::endl;
+            mGrains.push_back(new GrainEffect(bufferGranulate, mDuration, mBlank, mInitPos,mChannel, mSize ));
+
         }
         mPosition = 0.0f;
     }
@@ -36,15 +44,17 @@ samples ofxGranulateEffect::process(samples sample){
         }
         for(int i =0; i<mGrains.size();i++) {
             samples retour = mGrains[i]->getSample();
+            //std::cout<< retour.right << std::endl;
             sampleResult.right += retour.right;
-            sampleResult.left += retour.left;
+            sampleResult.left  += retour.left;
         }
     }
     else{
         sampleResult.right = sampleResult.left = 0.0f;
     }
-    bufferGranulate.pop_front();
-    bufferGranulate.pop_front();
+    //bufferGranulate.pop_front();
+    //bufferGranulate.pop_front();
+
     return sampleResult;
 }
 
@@ -58,8 +68,12 @@ int ofxGranulateEffect::getDuration(){
 void ofxGranulateEffect::setDuration(float duration){
     if(duration>0){
         float oldDuration = mDuration;
-        mDuration = duration*14000;
-        setOverlap((float)mOverlap/(float)oldDuration);
+        mDuration = duration*8000;
+
+        if (mDuration>=mSize) {
+            mDuration = mSize - 300;
+        }
+        //setOverlap((float)mOverlap/(float)oldDuration);
     }
 }
 
@@ -68,7 +82,7 @@ int ofxGranulateEffect::getOverlap(){
 }
 
 void ofxGranulateEffect::setBlank(float blank){
-    mBlank = blank * bufferGranulate.size();
+    mBlank = blank * 10000;
 }
 
 int ofxGranulateEffect::getBlank(){
@@ -106,19 +120,37 @@ int ofxGranulateEffect::getInitPosition(){
 
 // GRAINS
 
-GrainEffect::GrainEffect(std::deque<float> audioFile, int duration,int blank, int initPos, int channels){
+GrainEffect::GrainEffect(float* audioFile, int duration,int blank, int initPos, int channels, int size){
     mDuration = duration;
-    mWindowSize = audioFile.size()-6000;
+
     mCurrentPostion=0;
-    mAudioFile.assign(audioFile.begin(), audioFile.end());
-    //std::cout<<initPos<<std::endl;
-    mInitPostion = (0 + rand()%mWindowSize)%(audioFile.size()-mDuration);
+
+    //mAudioFile = new float[audioFile.size()];
+    //std::memcpy(mAudioFile, &audioFile[0],sizeof(float)*audioFile.size() );
+    //mAudioFile.assign(audioFile.begin(), audioFile.end());
+    mWindowSize = size-mDuration;
+
+    mInitPostion = (0 + rand()%mWindowSize);
     if(mInitPostion%channels == 1){
         mInitPostion --;
     }
+
+    mAudioFile = new float [channels*mDuration];
+    std::memcpy(mAudioFile, &audioFile[mInitPostion], sizeof(float)*(mDuration*channels));
+//    mAudioFile =
+    //mAudioFile = audioFile;
+    //std::cout << "INIT POS " << mInitPostion << "\t mWindowSize " << mWindowSize <<"\t mDuration" << mDuration <<"\t BUFFERSIZE " << size<< "channel " << channels << std::endl;
+    mInitPostion = 0;
+
+
+
     mBlank = blank;
     done = false;
     mChannels = channels;
+}
+
+GrainEffect::~GrainEffect(){
+    delete [] mAudioFile;
 }
 
 samples GrainEffect::getSample(){
@@ -127,12 +159,12 @@ samples GrainEffect::getSample(){
     if (mCurrentPostion <mDuration) {
         float hanningCoeff = 0.5 - 0.5* cosf(2*M_PI *(float)mCurrentPostion/(float)(mDuration));
         if(mChannels == 1){
-            current_sample.right = mAudioFile.at(mInitPostion+mCurrentPostion)*hanningCoeff;
-            current_sample.left  = mAudioFile.at(mInitPostion+mCurrentPostion)*hanningCoeff;
+            current_sample.right = mAudioFile[mInitPostion+mCurrentPostion]*hanningCoeff;
+            current_sample.left  = mAudioFile[mInitPostion+mCurrentPostion]*hanningCoeff;
         }
         else if(mChannels == 2){
-            current_sample.left = mAudioFile.at(mInitPostion+mCurrentPostion*mChannels    )*hanningCoeff;
-            current_sample.right  = mAudioFile.at(mInitPostion+mCurrentPostion*mChannels + 1)*hanningCoeff;
+            current_sample.left = mAudioFile[mInitPostion+mCurrentPostion*mChannels    ]*hanningCoeff;
+            current_sample.right  = mAudioFile[mInitPostion+mCurrentPostion*mChannels + 1]*hanningCoeff;
         }
 
     }

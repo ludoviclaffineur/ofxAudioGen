@@ -14,9 +14,21 @@ ofxGranularSynth::ofxGranularSynth(string path){
     mPosition = 0;
     mOverlap  = 50;
     mVolume   = 0.9f;
-    music = new std::vector <float>();
+    //music = new std::vector <float>();
     loadWave(path);
-    mInitPos  = music->size()/2;
+    //mInitPos  = music->size()/2;
+}
+
+ofxGranularSynth::ofxGranularSynth(float* wav){
+    mDuration = 3000;
+    mBlank    = 200;
+    mPosition = 0;
+    mOverlap  = 50;
+    mVolume   = 0.9f;
+    music = wav;
+    //music = new std::vector <float>();
+    //loadWave(path);
+    //mInitPos  = music->size()/2;
 }
 
 ofxGranularSynth::ofxGranularSynth(){
@@ -25,14 +37,14 @@ ofxGranularSynth::ofxGranularSynth(){
     mPosition = 0;
     mOverlap  = 50;
     mVolume   = 0.9f;
-    music = new std::vector <float>();
+    //music = new std::vector <float>();
     mInitPos  = 0;
 }
 
 void ofxGranularSynth::audioOut(float *output, int bufferSize, int nChannels){
     for (int i=0; i<bufferSize; i++) {
         samples sample = getSample();
-
+        
         for (int j =0; j<mEffects.size(); j++) {
             sample = mEffects[j]->process( sample);
         }
@@ -47,7 +59,7 @@ samples ofxGranularSynth::getSample(){
     samples sampleResult;
     if(mGrains.size()==0 || mPosition++ > (mGrains[mGrains.size()-1]->mDuration + mGrains[mGrains.size()-1]->mBlank - mOverlap)){
         if(mDuration >mOverlap){
-            mGrains.push_back(new Grain(music, mDuration, mBlank, mInitPos,mChannel));
+            mGrains.push_back(new Grain(music, mDuration, mBlank, mInitPos,mChannel, musicSize));
         }
         mPosition = 0.0f;
     }
@@ -91,23 +103,24 @@ bool ofxGranularSynth::loadWave(string path){
     fread(wh.data, 4, 1, fp);
     fread(&wh.data_size,4,1,fp);
     wh.NumSamples= ((wh.data_size*8)/wh.bits_per_samples)/wh.channels;
-    //mSound = new float[wh.NumSamples];
+    music = new float[wh.NumSamples];
+    musicSize = wh.NumSamples;
     int count = 0;
     std::cout<< wh.channels <<endl;
     short int b = 0;
 
     while(count <wh.NumSamples){
         fread(&b,1,2,fp);
-        music->push_back((b)/(float)INT16_MAX);
+        music[count] = (b)/(float)INT16_MAX;
         //mSound[count]= (b/(float)INT16_MAX);
         if(wh.channels==2){
             fread(&b,1,2,fp);
-            music->push_back((b)/(float)INT16_MAX);
+            music[count] = ((b)/(float)INT16_MAX);
         }
         count++;
     }
     mChannel = wh.channels;
-    mInitPos  = music->size()/2;
+    mInitPos  = musicSize/2;
     return true;
 }
 
@@ -161,19 +174,21 @@ int ofxGranularSynth::getInitPosition(){
 
 // GRAINS
 
-Grain::Grain(std::vector<float>* audioFile, int duration,int blank, int initPos, int channels){
+Grain::Grain(float* audioFile, int duration,int blank, int initPos, int channels, int musicSize){
     mDuration = duration;
     mWindowSize = 10000;
     mCurrentPostion=0;
     mAudioFile = audioFile;
+     mMusicSize = musicSize;
     //std::cout<<initPos<<std::endl;
-    mInitPostion = (initPos + rand()%mWindowSize)%(audioFile->size()-mDuration);
+    mInitPostion = (initPos + rand()%mWindowSize)%(mMusicSize-mDuration-mWindowSize);
     if(mInitPostion%channels == 1){
         mInitPostion --;
     }
     mBlank = blank;
     done = false;
     mChannels = channels;
+
 }
 
 samples Grain::getSample(){
@@ -182,12 +197,12 @@ samples Grain::getSample(){
     if (mCurrentPostion <mDuration) {
         float hanningCoeff = 0.5 - 0.5* cosf(2*M_PI *(float)mCurrentPostion/(float)(mDuration));
         if(mChannels == 1){
-            current_sample.right = mAudioFile->at(mInitPostion+mCurrentPostion)*hanningCoeff;
-            current_sample.left  = mAudioFile->at(mInitPostion+mCurrentPostion)*hanningCoeff;
+            current_sample.right = mAudioFile[mInitPostion+mCurrentPostion]*hanningCoeff;
+            current_sample.left  = mAudioFile[mInitPostion+mCurrentPostion]*hanningCoeff;
         }
         else if(mChannels == 2){
-            current_sample.left = mAudioFile->at(mInitPostion+mCurrentPostion*mChannels    )*hanningCoeff;
-            current_sample.right  = mAudioFile->at(mInitPostion+mCurrentPostion*mChannels + 1)*hanningCoeff;
+            current_sample.left = mAudioFile[mInitPostion+mCurrentPostion*mChannels    ]*hanningCoeff;
+            current_sample.right  = mAudioFile[mInitPostion+mCurrentPostion*mChannels + 1]*hanningCoeff;
         }
 
     }

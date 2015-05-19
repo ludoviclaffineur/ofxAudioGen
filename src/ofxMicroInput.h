@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "ofxAudioEffect.h"
 
+
 class ofxMicroInput: public ofBaseSoundOutput, public ofBaseSoundInput{
 public:
     ofxMicroInput();
@@ -24,5 +25,7 @@ public:
     ofSoundStream soundStream;
     std::vector<ofxAudioEffect*> mEffects;
 
-    deque<float> bufferIntermediate;
+    float bufferIntermediate[199680];
+    int currentPos=0;
+    //ofxGranularSynth* granuSynth;
 };

@@ -42,6 +42,7 @@
 		F7D655384803A0A2520C16E2 /* ofxGranularSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4261B6229D21E547AAFEC9A1 /* ofxGranularSynth.cpp */; };
 		FE0BD73D1B00D5520086F7BF /* ofxDelayEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE0BD73B1B00D5520086F7BF /* ofxDelayEffect.cpp */; };
 		FEC2A5191B021D7600AC29B1 /* ofxMicroInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEC2A5171B021D7600AC29B1 /* ofxMicroInput.cpp */; };
+		FEF9E42F1B03490F0032A741 /* ofxGranulateEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF9E42D1B03490F0032A741 /* ofxGranulateEffect.cpp */; };
 		FF6864BAFAE4E967DDC2EED8 /* ofxNoiseSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43907E5B035CB70425936C26 /* ofxNoiseSynth.cpp */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,8 @@
 		FE0BD73C1B00D5520086F7BF /* ofxDelayEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDelayEffect.h; path = ../src/ofxDelayEffect.h; sourceTree = "<group>"; };
 		FEC2A5171B021D7600AC29B1 /* ofxMicroInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMicroInput.cpp; path = ../src/ofxMicroInput.cpp; sourceTree = "<group>"; };
 		FEC2A5181B021D7600AC29B1 /* ofxMicroInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMicroInput.h; path = ../src/ofxMicroInput.h; sourceTree = "<group>"; };
+		FEF9E42D1B03490F0032A741 /* ofxGranulateEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGranulateEffect.cpp; path = ../src/ofxGranulateEffect.cpp; sourceTree = "<group>"; };
+		FEF9E42E1B03490F0032A741 /* ofxGranulateEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxGranulateEffect.h; path = ../src/ofxGranulateEffect.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,8 @@
 				A829E610479BFF6AD8C17761 /* ofxSquareSynth.h */,
 				FEC2A5171B021D7600AC29B1 /* ofxMicroInput.cpp */,
 				FEC2A5181B021D7600AC29B1 /* ofxMicroInput.h */,
+				FEF9E42D1B03490F0032A741 /* ofxGranulateEffect.cpp */,
+				FEF9E42E1B03490F0032A741 /* ofxGranulateEffect.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				F7D655384803A0A2520C16E2 /* ofxGranularSynth.cpp in Sources */,
 				FF6864BAFAE4E967DDC2EED8 /* ofxNoiseSynth.cpp in Sources */,
 				77FECDCC87A4122714F66CE3 /* ofxSawSynth.cpp in Sources */,
+				FEF9E42F1B03490F0032A741 /* ofxGranulateEffect.cpp in Sources */,
 				FEC2A5191B021D7600AC29B1 /* ofxMicroInput.cpp in Sources */,
 				696E0D8FAA1F8729AF441F3F /* ofxSineSynth.cpp in Sources */,
 				F733502A9F7CFFF6035A5D61 /* ofxSquareSynth.cpp in Sources */,

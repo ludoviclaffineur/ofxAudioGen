@@ -16,7 +16,7 @@
 
 class Grain{
 public:
-    Grain(std::vector<float>* audioFile, int duration, int blank,int initPos, int channels);
+    Grain(float* audioFile, int duration, int blank,int initPos, int channels, int musicSize);
     samples getSample();
     enum ENVELOPE{
         ATTACK=0,
@@ -29,7 +29,7 @@ public:
     int mCurrentPostion;
     int mInitPostion;
     const int nbrSamplesFade = 20;
-    std::vector<float>* mAudioFile;
+    float* mAudioFile;
     bool isDone(){
         return done;
     }
@@ -37,6 +37,7 @@ public:
     int mBlank;
     int mWindowSize;
     int mChannels;
+    int mMusicSize;
 };
 
 
@@ -44,9 +45,11 @@ class ofxGranularSynth : public ofxAudioSynth{
 public:
     ofxGranularSynth();
     ofxGranularSynth(string path);
+    ofxGranularSynth(float* wav);
     bool loadWave(string path);
     void audioOut(float *output, int bufferSize, int nChannels);
-    vector  <float>* music;
+    float* music;
+    int musicSize=0;;
 
     void setInitPosition(int delay);
     int getInitPosition();

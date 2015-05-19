@@ -34,7 +34,7 @@
 		EAF420394667C4696B4CD131 /* ofxAudioSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38B5D4400F979B8DC3A6F5D /* ofxAudioSynth.cpp */; };
 		F733502A9F7CFFF6035A5D61 /* ofxSquareSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58931C4D764736CEEE6434AC /* ofxSquareSynth.cpp */; };
 		F7D655384803A0A2520C16E2 /* ofxGranularSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4261B6229D21E547AAFEC9A1 /* ofxGranularSynth.cpp */; };
-		FEB4D1061B0224D2001BABB6 /* ofxGranulateEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEB4D1041B0224D2001BABB6 /* ofxGranulateEffect.cpp */; };
+		FEF9E42C1B0348E30032A741 /* ofxGranulateEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF9E42A1B0348E30032A741 /* ofxGranulateEffect.cpp */; };
 		FF6864BAFAE4E967DDC2EED8 /* ofxNoiseSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43907E5B035CB70425936C26 /* ofxNoiseSynth.cpp */; };
 /* End PBXBuildFile section */
 
@@ -112,8 +112,8 @@
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		EE3B2A6856897D8318F0B13D /* ofxMicroInput.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMicroInput.h; path = ../../../addons/ofxAudioGen/src/ofxMicroInput.h; sourceTree = SOURCE_ROOT; };
 		F5B5DB156339BDDBE2BCE7C2 /* ofxSineSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSineSynth.h; path = ../../../addons/ofxAudioGen/src/ofxSineSynth.h; sourceTree = SOURCE_ROOT; };
-		FEB4D1041B0224D2001BABB6 /* ofxGranulateEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGranulateEffect.cpp; sourceTree = "<group>"; };
-		FEB4D1051B0224D2001BABB6 /* ofxGranulateEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGranulateEffect.h; sourceTree = "<group>"; };
+		FEF9E42A1B0348E30032A741 /* ofxGranulateEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGranulateEffect.cpp; path = ../src/ofxGranulateEffect.cpp; sourceTree = "<group>"; };
+		FEF9E42B1B0348E30032A741 /* ofxGranulateEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxGranulateEffect.h; path = ../src/ofxGranulateEffect.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +166,8 @@
 				F5B5DB156339BDDBE2BCE7C2 /* ofxSineSynth.h */,
 				58931C4D764736CEEE6434AC /* ofxSquareSynth.cpp */,
 				A829E610479BFF6AD8C17761 /* ofxSquareSynth.h */,
-				FEB4D1041B0224D2001BABB6 /* ofxGranulateEffect.cpp */,
-				FEB4D1051B0224D2001BABB6 /* ofxGranulateEffect.h */,
+				FEF9E42A1B0348E30032A741 /* ofxGranulateEffect.cpp */,
+				FEF9E42B1B0348E30032A741 /* ofxGranulateEffect.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -361,7 +361,7 @@
 				F7D655384803A0A2520C16E2 /* ofxGranularSynth.cpp in Sources */,
 				986F193C15346A31370FE83E /* ofxMicroInput.cpp in Sources */,
 				FF6864BAFAE4E967DDC2EED8 /* ofxNoiseSynth.cpp in Sources */,
-				FEB4D1061B0224D2001BABB6 /* ofxGranulateEffect.cpp in Sources */,
+				FEF9E42C1B0348E30032A741 /* ofxGranulateEffect.cpp in Sources */,
 				77FECDCC87A4122714F66CE3 /* ofxSawSynth.cpp in Sources */,
 				696E0D8FAA1F8729AF441F3F /* ofxSineSynth.cpp in Sources */,
 				F733502A9F7CFFF6035A5D61 /* ofxSquareSynth.cpp in Sources */,

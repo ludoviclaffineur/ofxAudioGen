@@ -9,12 +9,15 @@
 #pragma once
 #include "ofxAudioEffect.h"
 
+#include "ofMain.h"
+
 #include <deque>
 #include <math.h>
-
+#include <iostream>
 class GrainEffect{
 public:
-    GrainEffect(std::deque<float> audioFile, int duration, int blank,int initPos, int channels);
+    GrainEffect(float* audioFile, int duration, int blank,int initPos, int channels, int size);
+    ~GrainEffect();
     samples getSample();
     enum ENVELOPE{
         ATTACK=0,
@@ -27,7 +30,7 @@ public:
     int mCurrentPostion;
     int mInitPostion;
     const int nbrSamplesFade = 20;
-    std::deque<float> mAudioFile;
+    float* mAudioFile;
     bool isDone(){
         return done;
     }
@@ -35,6 +38,8 @@ public:
     int mBlank;
     int mWindowSize;
     int mChannels;
+
+
 };
 
 
@@ -58,7 +63,9 @@ public:
     void setBlank(float blank);
     int getBlank();
 
-    std::deque<float> bufferGranulate;
+    float* bufferGranulate;
+
+    void setBuffer(float* buffer, int size);
 
 private:
     std::deque <GrainEffect*> mGrains ;
@@ -69,4 +76,5 @@ private:
     float   mVolume;
     int     mInitPos;
     int     mChannel;
+    int mSize;
 };
