@@ -103,18 +103,19 @@ bool ofxGranularSynth::loadWave(string path){
     fread(wh.data, 4, 1, fp);
     fread(&wh.data_size,4,1,fp);
     wh.NumSamples= ((wh.data_size*8)/wh.bits_per_samples)/wh.channels;
-    music = new float[wh.NumSamples];
-    musicSize = wh.NumSamples;
+    music = new float[wh.NumSamples*wh.channels];
+    musicSize = wh.NumSamples*wh.channels;
     int count = 0;
     std::cout<< wh.channels <<endl;
     short int b = 0;
 
-    while(count <wh.NumSamples){
+    while(count <wh.NumSamples*wh.channels){
         fread(&b,1,2,fp);
         music[count] = (b)/(float)INT16_MAX;
         //mSound[count]= (b/(float)INT16_MAX);
         if(wh.channels==2){
             fread(&b,1,2,fp);
+            count++;
             music[count] = ((b)/(float)INT16_MAX);
         }
         count++;
