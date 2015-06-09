@@ -17,7 +17,7 @@ void ofApp::setup(){
     gui.add(mSliderGrainLength.setup("grain_size", 0.3,0,1));
     gui.add(mSliderBlank.setup("Blank", 0.3,0,1));
     gui.add(mSliderOverlap.setup("Overlap", 0.3,0,1));
-    GranularSynth.loadWave("../../../data/Whyyyyy_1.wav");
+    GranularSynth.loadWave("../../../data/FemaleVoice.wav");
 
     //GranularSynth.loadWave("../../../data/stereo.wav");
 

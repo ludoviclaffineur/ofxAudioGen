@@ -7,7 +7,7 @@
 //
 
 #include "ofxGranulateEffect.h"
-
+#include <algorithm>
 ofxGranulateEffect::ofxGranulateEffect(){
     mChannel = 1;
     mDuration = 3000;
@@ -136,7 +136,11 @@ GrainEffect::GrainEffect(float* audioFile, int duration,int blank, int initPos, 
     }
 
     mAudioFile = new float [channels*mDuration];
-    std::memcpy(mAudioFile, &audioFile[mInitPostion], sizeof(float)*(mDuration*channels));
+    //std::memcpy(mAudioFile, &audioFile[mInitPostion], sizeof(float)*(mDuration*channels));
+
+    std::copy(&audioFile[mInitPostion], &audioFile[mInitPostion+mDuration*channels], mAudioFile);
+
+    //std::reverse_copy (&audioFile[mInitPostion], &audioFile[mInitPostion+mDuration*channels], mAudioFile);
 //    mAudioFile =
     //mAudioFile = audioFile;
     //std::cout << "INIT POS " << mInitPostion << "\t mWindowSize " << mWindowSize <<"\t mDuration" << mDuration <<"\t BUFFERSIZE " << size<< "channel " << channels << std::endl;
