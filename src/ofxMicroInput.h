@@ -1,15 +1,6 @@
-//
-//  ofxMicroInput.h
-//  GranularSynth
-//
-//  Created by Ludovic Laffineur on 12/05/15.
-//
-//
-
 #pragma once
 
-#include "ofMain.h"
-#include "ofxAudioEffect.h"
+#include "ofxAudioSynth.h"
 
 
 class ofxMicroInput: public ofBaseSoundOutput, public ofBaseSoundInput{
@@ -25,7 +16,7 @@ public:
     ofSoundStream soundStream;
     std::vector<ofxAudioEffect*> mEffects;
 
-    float bufferIntermediate[199680];
+    float bufferIntermediate[199680]; // Mais pourquoi donc ce chiffre ?
     int currentPos=0;
-    //ofxGranularSynth* granuSynth;
+
 };

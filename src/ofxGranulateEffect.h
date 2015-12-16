@@ -1,19 +1,8 @@
-//
-//  ofxGranulateEffect.h
-//  MicroInput
-//
-//  Created by Ludovic Laffineur on 12/05/15.
-//
-//
-
 #pragma once
+
 #include "ofxAudioEffect.h"
+#include "ofxGrain.h"
 
-#include "ofMain.h"
-
-#include <deque>
-#include <math.h>
-#include <iostream>
 class GrainEffect{
 public:
     GrainEffect(float* audioFile, int duration, int blank,int initPos, int channels, int size);
@@ -25,6 +14,7 @@ public:
         RELEASE,
         STOP,
     };
+// mettre en private !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     int mEnvelope;
     int mDuration;
     int mCurrentPostion;

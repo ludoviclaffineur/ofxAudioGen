@@ -4,19 +4,24 @@
 #include "ofxAudioGen.h"
 #include "ofxGui.h"
 
+#define SCREENWIDTH       1024
+#define SCREENHEIGHT      800
+
 class ofApp : public ofBaseApp{
 
 	public:
 		void setup();
 		void update();
 		void draw();
-    void playStop(bool& check);
-
-    void blankCallback(float& bl);
-    void overlapCallback(float& bl);
-    void depthCallback(float& bl);
-    void mixCallback(float& bl);
-    void byPassEffects(bool &byPass);
+ 
+        void playCallback(bool& play);
+        void blankCallback(float& blank);
+        void overlapCallback(float& overlap);
+        void depthCallback(float& depth);
+        void mixCallback(float& mix);
+        void byPassEffectsCallback(bool& byPass);
+        void grainLengthCallback(float& grainLength);
+        void volumeCallback(float& volume);
     
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -27,25 +32,24 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-        void grainLenth(float &gl);
+    
+
         //ofxSquareSynth     SquareSynth;
         //ofxNoiseSynth      NoiseSynth;
         //ofxSawSynth        SawSynth;
         //ofxSineSynth       SineSynth;
-        ofxGranularSynth   GranularSynth;
-        //ofMatrixStack test;
-        ofxFloatSlider mSliderGrainLength;
+        ofxGranularSynth    GranularSynth;
+        ofxDelayEffect*     delay;
     
-    ofxFloatSlider mSliderDepth;
-    ofxFloatSlider mSliderMix;
-
-        ofxFloatSlider mSliderOverlap;
-        ofxFloatSlider mSliderBlank;
-        ofxToggle mTogglePlaySound;
-
-        ofxToggle mToggleByPassEffect;
-    ofxDelayEffect* delay;
-    ofTrueTypeFont mytext;
-    ofxPanel gui;
-    int increment;
+        ofxFloatSlider      mSliderGrainLength;
+        ofxFloatSlider      mSliderDepth;
+        ofxFloatSlider      mSliderMix;
+        ofxFloatSlider      mSliderOverlap;
+        ofxFloatSlider      mSliderBlank;
+        ofxFloatSlider      mVolume;
+        ofxToggle           mTogglePlaySound;
+        ofxToggle           mToggleByPassEffect;
+        ofxPanel            gui;
+    
+        int                 increment;
 };

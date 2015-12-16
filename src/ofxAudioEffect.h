@@ -1,14 +1,6 @@
-//
-//  ofxAudioEffect.h
-//  AudioGenTest
-//
-//  Created by Ludovic Laffineur on 7/05/15.
-//
-//
-
 #pragma once
 
-#include "ofxAudioGenConstants.h"
+#include "ofxBaseAudioGen.h"
 
 class ofxAudioEffect{
 public:

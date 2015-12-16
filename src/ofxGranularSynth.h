@@ -1,18 +1,7 @@
-//
-//  ofxGranularSynth.h
-//  AudioGenTest
-//
-//  Created by Ludovic Laffineur on 7/05/15.
-//
-//
-
 #pragma once
 
 #include "ofxAudioSynth.h"
-
-
-
-
+#include "ofxGrain.h"
 
 class Grain{
 public:

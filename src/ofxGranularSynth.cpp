@@ -1,22 +1,13 @@
-//
-//  ofxGranularSynth.cpp
-//  AudioGenTest
-//
-//  Created by Ludovic Laffineur on 7/05/15.
-//
-//
-
 #include "ofxGranularSynth.h"
 
+//--------------------------------------------------------------
 ofxGranularSynth::ofxGranularSynth(string path){
     mDuration = 3000;
     mBlank    = 200;
     mPosition = 0;
     mOverlap  = 50;
     mVolume   = 0.9f;
-    //music = new std::vector <float>();
     loadWave(path);
-    //mInitPos  = music->size()/2;
 }
 
 ofxGranularSynth::ofxGranularSynth(float* wav){
@@ -26,9 +17,6 @@ ofxGranularSynth::ofxGranularSynth(float* wav){
     mOverlap  = 50;
     mVolume   = 0.9f;
     music = wav;
-    //music = new std::vector <float>();
-    //loadWave(path);
-    //mInitPos  = music->size()/2;
 }
 
 ofxGranularSynth::ofxGranularSynth(){
@@ -37,26 +25,27 @@ ofxGranularSynth::ofxGranularSynth(){
     mPosition = 0;
     mOverlap  = 50;
     mVolume   = 0.9f;
-    //music = new std::vector <float>();
     mInitPos  = 0;
 }
 
+//--------------------------------------------------------------
 void ofxGranularSynth::audioOut(float *output, int bufferSize, int nChannels){
     for (int i=0; i<bufferSize; i++) {
         samples sample = getSample();
         
         for (int j =0; j<mEffects.size(); j++) {
-            sample = mEffects[j]->process( sample);
+            sample = mEffects[j]->process(sample);
         }
-        output[i*nChannels    ] = sample.left;
-        output[i*nChannels + 1] = sample.right;
+        output[i*nChannels    ] = sample.left * mVolume;
+        output[i*nChannels + 1] = sample.right * mVolume;
     }
 
 }
 
+//--------------------------------------------------------------
 samples ofxGranularSynth::getSample(){
-   //float sampleResult = 0.0f;
     samples sampleResult;
+    
     if(mGrains.size()==0 || mPosition++ > (mGrains[mGrains.size()-1]->mDuration + mGrains[mGrains.size()-1]->mBlank - mOverlap)){
         if(mDuration >mOverlap){
             mGrains.push_back(new Grain(music, mDuration, mBlank, mInitPos,mChannel, musicSize));
@@ -65,7 +54,6 @@ samples ofxGranularSynth::getSample(){
     }
     if (mGrains.size()!=0) {
         if (mGrains[0]->isDone()){
-            //std::cout<<"DELETE"<<std::endl;
             delete *mGrains.begin();
             mGrains.erase(mGrains.begin());
         }
@@ -81,6 +69,8 @@ samples ofxGranularSynth::getSample(){
     return sampleResult;
 }
 
+
+//--------------------------------------------------------------
 bool ofxGranularSynth::loadWave(string path){
     FILE *fp;
     fp = fopen(path.c_str(),"rb");
@@ -103,16 +93,18 @@ bool ofxGranularSynth::loadWave(string path){
     fread(wh.data, 4, 1, fp);
     fread(&wh.data_size,4,1,fp);
     wh.NumSamples= ((wh.data_size*8)/wh.bits_per_samples)/wh.channels;
-    music = new float[wh.NumSamples*wh.channels];
+    
     musicSize = wh.NumSamples*wh.channels;
+    music = new float[musicSize];
+    mChannel = wh.channels;
+    mInitPos  = musicSize/2;
+    
     int count = 0;
-    std::cout<< wh.channels <<endl;
     short int b = 0;
 
-    while(count <wh.NumSamples*wh.channels){
+    while(count <musicSize){
         fread(&b,1,2,fp);
         music[count] = (b)/(float)INT16_MAX;
-        //mSound[count]= (b/(float)INT16_MAX);
         if(wh.channels==2){
             fread(&b,1,2,fp);
             count++;
@@ -120,16 +112,16 @@ bool ofxGranularSynth::loadWave(string path){
         }
         count++;
     }
-    mChannel = wh.channels;
-    mInitPos  = musicSize/2;
     return true;
 }
 
 
+//--------------------------------------------------------------
 int ofxGranularSynth::getDuration(){
     return mDuration;
 }
 
+//--------------------------------------------------------------
 void ofxGranularSynth::setDuration(float duration){
     if(duration>0){
         float oldDuration = mDuration;
@@ -138,35 +130,43 @@ void ofxGranularSynth::setDuration(float duration){
     }
 }
 
+//--------------------------------------------------------------
 int ofxGranularSynth::getOverlap(){
     return mOverlap;
 }
 
+//--------------------------------------------------------------
 void ofxGranularSynth::setBlank(float blank){
     mBlank = blank * 14000;
 }
 
+//--------------------------------------------------------------
 int ofxGranularSynth::getBlank(){
     return mBlank;
 }
 
+//--------------------------------------------------------------
 void ofxGranularSynth::setOverlap(float overlap){
         mOverlap = overlap * mDuration;
 
 }
 
+//--------------------------------------------------------------
 float ofxGranularSynth::getVolume(){
     return mVolume;
 }
 
+//--------------------------------------------------------------
 void ofxGranularSynth::setVolume(float volume){
     mVolume = volume;
 }
 
+//--------------------------------------------------------------
 void ofxGranularSynth::setInitPosition(int initPos){
-    //std::cout<<initPos<<std::endl;
     mInitPos = initPos;
 }
+
+//--------------------------------------------------------------
 int ofxGranularSynth::getInitPosition(){
     return mInitPos;
 }
@@ -175,13 +175,13 @@ int ofxGranularSynth::getInitPosition(){
 
 // GRAINS
 
+//--------------------------------------------------------------
 Grain::Grain(float* audioFile, int duration,int blank, int initPos, int channels, int musicSize){
     mDuration = duration;
     mWindowSize = 10000;
     mCurrentPostion=0;
     mAudioFile = audioFile;
-     mMusicSize = musicSize;
-    //std::cout<<initPos<<std::endl;
+    mMusicSize = musicSize;
     mInitPostion = (initPos + rand()%mWindowSize)%(mMusicSize-mDuration-mWindowSize);
     if(mInitPostion%channels == 1){
         mInitPostion --;
@@ -192,6 +192,7 @@ Grain::Grain(float* audioFile, int duration,int blank, int initPos, int channels
 
 }
 
+//--------------------------------------------------------------
 samples Grain::getSample(){
     samples current_sample;
     float sample = 0.0f;

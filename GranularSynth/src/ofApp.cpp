@@ -2,60 +2,60 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetVerticalSync(true);
+    
+    ofSetFrameRate(20);
+    
+    GranularSynth.loadWave("../../../data/stereo.wav");
+    delay = new ofxDelayEffect(1000, 0.9, 10000);
+    GranularSynth.addEffect(delay);
+    GranularSynth.init();
+    GranularSynth.stop();
+    increment = GranularSynth.musicSize / SCREENWIDTH;
+    if(increment%2 == 1){
+        increment++;
+    }
+    
     gui.setup();
-    mTogglePlaySound.addListener(this, &ofApp::playStop);
 
-    mToggleByPassEffect.addListener(this, &ofApp::byPassEffects);
-    mSliderGrainLength.addListener(this, &ofApp::grainLenth);
+    mTogglePlaySound.addListener(this, &ofApp::playCallback);
+    mToggleByPassEffect.addListener(this, &ofApp::byPassEffectsCallback);
+    mSliderGrainLength.addListener(this, &ofApp::grainLengthCallback);
     mSliderBlank.addListener(this, &ofApp::blankCallback);
     mSliderOverlap.addListener(this, &ofApp::overlapCallback);
     mSliderDepth.addListener(this, &ofApp::depthCallback);
     mSliderMix.addListener(this, &ofApp::mixCallback);
-
+    mVolume.addListener(this, &ofApp::volumeCallback);
+    
     gui.add(mTogglePlaySound.setup("Play", false));
-    gui.add(mSliderGrainLength.setup("grain_size", 0.3,0,1));
+    gui.add(mSliderGrainLength.setup("Grain Size", 0.3,0,1));
     gui.add(mSliderBlank.setup("Blank", 0.3,0,1));
     gui.add(mSliderOverlap.setup("Overlap", 0.3,0,1));
-    GranularSynth.loadWave("../../../data/FemaleVoice.wav");
+    gui.add(mVolume.setup("Volume", 0.9,0,1));
+    gui.add(mSliderMix.setup("Mix", 0.3,0,1));
+    gui.add(mSliderDepth.setup("Depth", 0,0,20000));
+    gui.add(mToggleByPassEffect.setup("Bypass Effect", false));
 
-    //GranularSynth.loadWave("../../../data/stereo.wav");
-
-
-    delay = new ofxDelayEffect(1000,0.9, 10000);
-    GranularSynth.addEffect(delay);
-
-    GranularSynth.init();
-    GranularSynth.stop();
-    
-    increment = GranularSynth.musicSize / 1000;
-    if(increment%2 == 1){
-        increment++;
-    }
-
-    gui.add(mSliderMix.setup("mix", 0.3,0,1));
-    gui.add(mSliderDepth.setup("depth", 0,0,20000));
-    gui.add(mToggleByPassEffect.setup("byPassEffect", false));
-    mytext.loadFont("Calibri", 20);
-
-    ofSetFrameRate(10);
 }
 
-void ofApp::mixCallback(float &bl){
-    delay->mMix = bl;
+//--------------------------------------------------------------
+
+void ofApp::mixCallback(float &mix){
+    delay->mMix = mix;
 }
 
-void ofApp::depthCallback(float &bl){
-    delay->mDepth = bl;
+//--------------------------------------------------------------
+void ofApp::depthCallback(float& depth){
+    delay->mDepth = depth;
 }
 
-void ofApp::byPassEffects(bool &byPass){
-    std::cout<<byPass<<endl;
+//--------------------------------------------------------------
+void ofApp::byPassEffectsCallback(bool &byPass){
     GranularSynth.mEffects[0]->byPass(byPass);
 }
 
-void ofApp::playStop(bool &check){
-    if(check){
+//--------------------------------------------------------------
+void ofApp::playCallback(bool &play){
+    if(play){
         GranularSynth.play();
     }
     else{
@@ -63,29 +63,35 @@ void ofApp::playStop(bool &check){
     }
 }
 
-void ofApp::grainLenth(float &gl){
-    GranularSynth.setDuration(gl);
+//--------------------------------------------------------------
+void ofApp::grainLengthCallback(float& grainLength){
+    GranularSynth.setDuration(grainLength);
 }
 
-void ofApp::blankCallback(float &gl){
-    GranularSynth.setBlank(gl);
+//--------------------------------------------------------------
+void ofApp::volumeCallback(float& volume){
+    GranularSynth.setVolume(volume);
 }
 
-void ofApp::overlapCallback(float &bl){
-    GranularSynth.setOverlap(bl);
+//--------------------------------------------------------------
+void ofApp::blankCallback(float& blank){
+    GranularSynth.setBlank(blank);
+}
+
+//--------------------------------------------------------------
+void ofApp::overlapCallback(float& overlap){
+    GranularSynth.setOverlap(overlap);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    //delay->mDepth++;
-    GranularSynth.setInitPosition((rand()%GranularSynth.musicSize));
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0, 0, 0);
     int j =0;
-
     for (int i =0 ; i<GranularSynth.musicSize-increment; j++ ,i+=increment) {
         ofLine(j,
                300+ GranularSynth.music[i]*100.0,
@@ -93,19 +99,14 @@ void ofApp::draw(){
                300+ GranularSynth.music[i+increment]*100.0);
     }
     j=0;
-
-    for (int i =1 ; i<GranularSynth.musicSize- increment; j++ ,i+=increment) {
+    for (int i =1 ; i<GranularSynth.musicSize-increment; j++ ,i+=increment) {
         ofLine(j,
                 500+ GranularSynth.music[i]*100.0,
                 j+1,
                 500+ GranularSynth.music[i+increment]*100.0);
     }
-
     ofNoFill();
-    ofRect(GranularSynth.getInitPosition()/(float)increment, 200, 10000/increment, 400);
-    mytext.drawString("Granular synthesiser", ofGetWindowSize().x/2, 40);
-
-    mytext.drawString("Ludovic LAFFINEUR", ofGetWindowSize().x/2, 80);
+    ofRect(GranularSynth.getInitPosition()/(float)increment, 200, GranularSynth.getDuration()/increment, 400);
     gui.draw();
 }
 
@@ -131,7 +132,7 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    if (x>0 && x<1000 && y<700 && y>300) {
+    if (y<700 && y>200) {
         GranularSynth.setInitPosition(x*increment);
     }
 }

@@ -21,7 +21,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-    ofxMicroInput mic;
-    ofxGranulateEffect granu;
+        ofxMicroInput microphone;
+        ofxGranulateEffect granulator;
+        ofxDelayEffect delay;
 
 };

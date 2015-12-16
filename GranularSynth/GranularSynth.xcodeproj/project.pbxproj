@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
-		2788D3DB35211527FCA10CCA /* ofxAudioEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E0298AAF068F9B2782020959 /* ofxAudioEffect.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
 		5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C88333E71C9457E441C33474 /* ofxButton.cpp */; };
-		696E0D8FAA1F8729AF441F3F /* ofxSineSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D45913BB201A4F772218D30 /* ofxSineSynth.cpp */; };
-		77FECDCC87A4122714F66CE3 /* ofxSawSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 524DFC6AF456609687BFB42C /* ofxSawSynth.cpp */; };
 		837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15F2C6477A769C03A56D1401 /* ofxSlider.cpp */; };
 		856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9604B925D32EE39065747725 /* ofxBaseGui.cpp */; };
 		B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */; };
@@ -36,14 +33,17 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
-		EAF420394667C4696B4CD131 /* ofxAudioSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38B5D4400F979B8DC3A6F5D /* ofxAudioSynth.cpp */; };
+		F05789BF1C148862002A135F /* ofxAudioEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789A91C148862002A135F /* ofxAudioEffect.cpp */; };
+		F05789C01C148862002A135F /* ofxAudioSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789AD1C148862002A135F /* ofxAudioSynth.cpp */; };
+		F05789C11C148862002A135F /* ofxDelayEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789AF1C148862002A135F /* ofxDelayEffect.cpp */; };
+		F05789C21C148862002A135F /* ofxGranularSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789B11C148862002A135F /* ofxGranularSynth.cpp */; };
+		F05789C31C148862002A135F /* ofxGranulateEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789B31C148862002A135F /* ofxGranulateEffect.cpp */; };
+		F05789C41C148862002A135F /* ofxMicroInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789B51C148862002A135F /* ofxMicroInput.cpp */; };
+		F05789C51C148862002A135F /* ofxNoiseSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789B71C148862002A135F /* ofxNoiseSynth.cpp */; };
+		F05789C61C148862002A135F /* ofxSawSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789B91C148862002A135F /* ofxSawSynth.cpp */; };
+		F05789C71C148862002A135F /* ofxSineSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789BB1C148862002A135F /* ofxSineSynth.cpp */; };
+		F05789C81C148862002A135F /* ofxSquareSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F05789BD1C148862002A135F /* ofxSquareSynth.cpp */; };
 		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
-		F733502A9F7CFFF6035A5D61 /* ofxSquareSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58931C4D764736CEEE6434AC /* ofxSquareSynth.cpp */; };
-		F7D655384803A0A2520C16E2 /* ofxGranularSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4261B6229D21E547AAFEC9A1 /* ofxGranularSynth.cpp */; };
-		FE0BD73D1B00D5520086F7BF /* ofxDelayEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE0BD73B1B00D5520086F7BF /* ofxDelayEffect.cpp */; };
-		FEC2A5191B021D7600AC29B1 /* ofxMicroInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEC2A5171B021D7600AC29B1 /* ofxMicroInput.cpp */; };
-		FEF9E42F1B03490F0032A741 /* ofxGranulateEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FEF9E42D1B03490F0032A741 /* ofxGranulateEffect.cpp */; };
-		FF6864BAFAE4E967DDC2EED8 /* ofxNoiseSynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43907E5B035CB70425936C26 /* ofxNoiseSynth.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,37 +77,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		051C9DFDF422F0C3AD34AE47 /* ofxAudioEffect.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAudioEffect.h; path = ../../../addons/ofxAudioGen/src/ofxAudioEffect.h; sourceTree = SOURCE_ROOT; };
 		0A1DAC09F322AE313A40706D /* ofxToggle.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxToggle.h; path = ../../../addons/ofxGui/src/ofxToggle.h; sourceTree = SOURCE_ROOT; };
-		0DB4C1F8F09697F96E689FD9 /* ofxAudioGenConstants.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAudioGenConstants.h; path = ../../../addons/ofxAudioGen/src/ofxAudioGenConstants.h; sourceTree = SOURCE_ROOT; };
 		15F2C6477A769C03A56D1401 /* ofxSlider.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSlider.cpp; path = ../../../addons/ofxGui/src/ofxSlider.cpp; sourceTree = SOURCE_ROOT; };
-		175A888B9F0841BBD39E2B19 /* ofxSawSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSawSynth.h; path = ../../../addons/ofxAudioGen/src/ofxSawSynth.h; sourceTree = SOURCE_ROOT; };
 		17E65988300FBD9AAA2CD0CA /* ofxGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGui.h; path = ../../../addons/ofxGui/src/ofxGui.h; sourceTree = SOURCE_ROOT; };
 		1C0DA2561397A7DE0246858B /* ofxGuiGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGuiGroup.h; path = ../../../addons/ofxGui/src/ofxGuiGroup.h; sourceTree = SOURCE_ROOT; };
-		1D45913BB201A4F772218D30 /* ofxSineSynth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSineSynth.cpp; path = ../../../addons/ofxAudioGen/src/ofxSineSynth.cpp; sourceTree = SOURCE_ROOT; };
 		2834D88A62CD23F3DE2C47D1 /* ofxButton.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxButton.h; path = ../../../addons/ofxGui/src/ofxButton.h; sourceTree = SOURCE_ROOT; };
-		4261B6229D21E547AAFEC9A1 /* ofxGranularSynth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGranularSynth.cpp; path = ../../../addons/ofxAudioGen/src/ofxGranularSynth.cpp; sourceTree = SOURCE_ROOT; };
-		43907E5B035CB70425936C26 /* ofxNoiseSynth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNoiseSynth.cpp; path = ../../../addons/ofxAudioGen/src/ofxNoiseSynth.cpp; sourceTree = SOURCE_ROOT; };
-		501BBF704284FCC7960F4913 /* ofxAudioSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAudioSynth.h; path = ../../../addons/ofxAudioGen/src/ofxAudioSynth.h; sourceTree = SOURCE_ROOT; };
-		524DFC6AF456609687BFB42C /* ofxSawSynth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSawSynth.cpp; path = ../../../addons/ofxAudioGen/src/ofxSawSynth.cpp; sourceTree = SOURCE_ROOT; };
 		52AFA1F08C420992CAAAE648 /* ofxSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSlider.h; path = ../../../addons/ofxGui/src/ofxSlider.h; sourceTree = SOURCE_ROOT; };
-		58931C4D764736CEEE6434AC /* ofxSquareSynth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSquareSynth.cpp; path = ../../../addons/ofxAudioGen/src/ofxSquareSynth.cpp; sourceTree = SOURCE_ROOT; };
 		78D67A00EB899FAC09430597 /* ofxLabel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxLabel.cpp; path = ../../../addons/ofxGui/src/ofxLabel.cpp; sourceTree = SOURCE_ROOT; };
 		802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSliderGroup.cpp; path = ../../../addons/ofxGui/src/ofxSliderGroup.cpp; sourceTree = SOURCE_ROOT; };
 		87F26B4B24CBD428AD9EEBAA /* ofxBaseGui.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBaseGui.h; path = ../../../addons/ofxGui/src/ofxBaseGui.h; sourceTree = SOURCE_ROOT; };
 		89449E3044D456F7DE7BEA14 /* ofxPanel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPanel.h; path = ../../../addons/ofxGui/src/ofxPanel.h; sourceTree = SOURCE_ROOT; };
-		8FA81D50DBA34FA03BE06BF2 /* ofxGranularSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGranularSynth.h; path = ../../../addons/ofxAudioGen/src/ofxGranularSynth.h; sourceTree = SOURCE_ROOT; };
 		907C5B5E104864A2D3A25745 /* ofxToggle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxToggle.cpp; path = ../../../addons/ofxGui/src/ofxToggle.cpp; sourceTree = SOURCE_ROOT; };
 		9604B925D32EE39065747725 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBaseGui.cpp; path = ../../../addons/ofxGui/src/ofxBaseGui.cpp; sourceTree = SOURCE_ROOT; };
-		A829E610479BFF6AD8C17761 /* ofxSquareSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSquareSynth.h; path = ../../../addons/ofxAudioGen/src/ofxSquareSynth.h; sourceTree = SOURCE_ROOT; };
 		B87C60311EC1FE841C1ECD89 /* ofxLabel.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxLabel.h; path = ../../../addons/ofxGui/src/ofxLabel.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
-		C38B5D4400F979B8DC3A6F5D /* ofxAudioSynth.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAudioSynth.cpp; path = ../../../addons/ofxAudioGen/src/ofxAudioSynth.cpp; sourceTree = SOURCE_ROOT; };
 		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
 		C88333E71C9457E441C33474 /* ofxButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxButton.cpp; path = ../../../addons/ofxGui/src/ofxButton.cpp; sourceTree = SOURCE_ROOT; };
-		D4E9B936C18FA41A3E238AE6 /* ofxAudioGen.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAudioGen.h; path = ../../../addons/ofxAudioGen/src/ofxAudioGen.h; sourceTree = SOURCE_ROOT; };
-		DB2E91016C0509B322EF3A5A /* ofxNoiseSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNoiseSynth.h; path = ../../../addons/ofxAudioGen/src/ofxNoiseSynth.h; sourceTree = SOURCE_ROOT; };
-		E0298AAF068F9B2782020959 /* ofxAudioEffect.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxAudioEffect.cpp; path = ../../../addons/ofxAudioGen/src/ofxAudioEffect.cpp; sourceTree = SOURCE_ROOT; };
 		E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPanel.cpp; path = ../../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -132,13 +117,28 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGuiGroup.cpp; path = ../../../addons/ofxGui/src/ofxGuiGroup.cpp; sourceTree = SOURCE_ROOT; };
-		F5B5DB156339BDDBE2BCE7C2 /* ofxSineSynth.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSineSynth.h; path = ../../../addons/ofxAudioGen/src/ofxSineSynth.h; sourceTree = SOURCE_ROOT; };
-		FE0BD73B1B00D5520086F7BF /* ofxDelayEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxDelayEffect.cpp; path = ../src/ofxDelayEffect.cpp; sourceTree = "<group>"; };
-		FE0BD73C1B00D5520086F7BF /* ofxDelayEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxDelayEffect.h; path = ../src/ofxDelayEffect.h; sourceTree = "<group>"; };
-		FEC2A5171B021D7600AC29B1 /* ofxMicroInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMicroInput.cpp; path = ../src/ofxMicroInput.cpp; sourceTree = "<group>"; };
-		FEC2A5181B021D7600AC29B1 /* ofxMicroInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMicroInput.h; path = ../src/ofxMicroInput.h; sourceTree = "<group>"; };
-		FEF9E42D1B03490F0032A741 /* ofxGranulateEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxGranulateEffect.cpp; path = ../src/ofxGranulateEffect.cpp; sourceTree = "<group>"; };
-		FEF9E42E1B03490F0032A741 /* ofxGranulateEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxGranulateEffect.h; path = ../src/ofxGranulateEffect.h; sourceTree = "<group>"; };
+		F05789A91C148862002A135F /* ofxAudioEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioEffect.cpp; sourceTree = "<group>"; };
+		F05789AA1C148862002A135F /* ofxAudioEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioEffect.h; sourceTree = "<group>"; };
+		F05789AB1C148862002A135F /* ofxAudioGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioGen.h; sourceTree = "<group>"; };
+		F05789AC1C148862002A135F /* ofxAudioGenConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioGenConstants.h; sourceTree = "<group>"; };
+		F05789AD1C148862002A135F /* ofxAudioSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxAudioSynth.cpp; sourceTree = "<group>"; };
+		F05789AE1C148862002A135F /* ofxAudioSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxAudioSynth.h; sourceTree = "<group>"; };
+		F05789AF1C148862002A135F /* ofxDelayEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelayEffect.cpp; sourceTree = "<group>"; };
+		F05789B01C148862002A135F /* ofxDelayEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelayEffect.h; sourceTree = "<group>"; };
+		F05789B11C148862002A135F /* ofxGranularSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGranularSynth.cpp; sourceTree = "<group>"; };
+		F05789B21C148862002A135F /* ofxGranularSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGranularSynth.h; sourceTree = "<group>"; };
+		F05789B31C148862002A135F /* ofxGranulateEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGranulateEffect.cpp; sourceTree = "<group>"; };
+		F05789B41C148862002A135F /* ofxGranulateEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGranulateEffect.h; sourceTree = "<group>"; };
+		F05789B51C148862002A135F /* ofxMicroInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMicroInput.cpp; sourceTree = "<group>"; };
+		F05789B61C148862002A135F /* ofxMicroInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMicroInput.h; sourceTree = "<group>"; };
+		F05789B71C148862002A135F /* ofxNoiseSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxNoiseSynth.cpp; sourceTree = "<group>"; };
+		F05789B81C148862002A135F /* ofxNoiseSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNoiseSynth.h; sourceTree = "<group>"; };
+		F05789B91C148862002A135F /* ofxSawSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSawSynth.cpp; sourceTree = "<group>"; };
+		F05789BA1C148862002A135F /* ofxSawSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSawSynth.h; sourceTree = "<group>"; };
+		F05789BB1C148862002A135F /* ofxSineSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSineSynth.cpp; sourceTree = "<group>"; };
+		F05789BC1C148862002A135F /* ofxSineSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSineSynth.h; sourceTree = "<group>"; };
+		F05789BD1C148862002A135F /* ofxSquareSynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSquareSynth.cpp; sourceTree = "<group>"; };
+		F05789BE1C148862002A135F /* ofxSquareSynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSquareSynth.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,49 +168,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1DA5AB192CD9E83C109D126D /* src */ = {
-			isa = PBXGroup;
-			children = (
-				E0298AAF068F9B2782020959 /* ofxAudioEffect.cpp */,
-				051C9DFDF422F0C3AD34AE47 /* ofxAudioEffect.h */,
-				FE0BD73B1B00D5520086F7BF /* ofxDelayEffect.cpp */,
-				FE0BD73C1B00D5520086F7BF /* ofxDelayEffect.h */,
-				D4E9B936C18FA41A3E238AE6 /* ofxAudioGen.h */,
-				0DB4C1F8F09697F96E689FD9 /* ofxAudioGenConstants.h */,
-				C38B5D4400F979B8DC3A6F5D /* ofxAudioSynth.cpp */,
-				501BBF704284FCC7960F4913 /* ofxAudioSynth.h */,
-				4261B6229D21E547AAFEC9A1 /* ofxGranularSynth.cpp */,
-				8FA81D50DBA34FA03BE06BF2 /* ofxGranularSynth.h */,
-				43907E5B035CB70425936C26 /* ofxNoiseSynth.cpp */,
-				DB2E91016C0509B322EF3A5A /* ofxNoiseSynth.h */,
-				524DFC6AF456609687BFB42C /* ofxSawSynth.cpp */,
-				175A888B9F0841BBD39E2B19 /* ofxSawSynth.h */,
-				1D45913BB201A4F772218D30 /* ofxSineSynth.cpp */,
-				F5B5DB156339BDDBE2BCE7C2 /* ofxSineSynth.h */,
-				58931C4D764736CEEE6434AC /* ofxSquareSynth.cpp */,
-				A829E610479BFF6AD8C17761 /* ofxSquareSynth.h */,
-				FEC2A5171B021D7600AC29B1 /* ofxMicroInput.cpp */,
-				FEC2A5181B021D7600AC29B1 /* ofxMicroInput.h */,
-				FEF9E42D1B03490F0032A741 /* ofxGranulateEffect.cpp */,
-				FEF9E42E1B03490F0032A741 /* ofxGranulateEffect.h */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
 		480A780D8D0308AE4A368801 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
 				A763ED608B35AE3310251DEE /* src */,
 			);
 			name = ofxGui;
-			sourceTree = "<group>";
-		};
-		A214215DE437838216004366 /* ofxAudioGen */ = {
-			isa = PBXGroup;
-			children = (
-				1DA5AB192CD9E83C109D126D /* src */,
-			);
-			name = ofxAudioGen;
 			sourceTree = "<group>";
 		};
 		A763ED608B35AE3310251DEE /* src */ = {
@@ -240,8 +203,8 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F05789A61C148862002A135F /* ofxAudioGen */,
 				480A780D8D0308AE4A368801 /* ofxGui */,
-				A214215DE437838216004366 /* ofxAudioGen */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -322,6 +285,44 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		F05789A61C148862002A135F /* ofxAudioGen */ = {
+			isa = PBXGroup;
+			children = (
+				F05789A81C148862002A135F /* src */,
+			);
+			name = ofxAudioGen;
+			path = ../../../addons/ofxAudioGen;
+			sourceTree = "<group>";
+		};
+		F05789A81C148862002A135F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F05789A91C148862002A135F /* ofxAudioEffect.cpp */,
+				F05789AA1C148862002A135F /* ofxAudioEffect.h */,
+				F05789AB1C148862002A135F /* ofxAudioGen.h */,
+				F05789AC1C148862002A135F /* ofxAudioGenConstants.h */,
+				F05789AD1C148862002A135F /* ofxAudioSynth.cpp */,
+				F05789AE1C148862002A135F /* ofxAudioSynth.h */,
+				F05789AF1C148862002A135F /* ofxDelayEffect.cpp */,
+				F05789B01C148862002A135F /* ofxDelayEffect.h */,
+				F05789B11C148862002A135F /* ofxGranularSynth.cpp */,
+				F05789B21C148862002A135F /* ofxGranularSynth.h */,
+				F05789B31C148862002A135F /* ofxGranulateEffect.cpp */,
+				F05789B41C148862002A135F /* ofxGranulateEffect.h */,
+				F05789B51C148862002A135F /* ofxMicroInput.cpp */,
+				F05789B61C148862002A135F /* ofxMicroInput.h */,
+				F05789B71C148862002A135F /* ofxNoiseSynth.cpp */,
+				F05789B81C148862002A135F /* ofxNoiseSynth.h */,
+				F05789B91C148862002A135F /* ofxSawSynth.cpp */,
+				F05789BA1C148862002A135F /* ofxSawSynth.h */,
+				F05789BB1C148862002A135F /* ofxSineSynth.cpp */,
+				F05789BC1C148862002A135F /* ofxSineSynth.h */,
+				F05789BD1C148862002A135F /* ofxSquareSynth.cpp */,
+				F05789BE1C148862002A135F /* ofxSquareSynth.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,26 +412,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F05789C61C148862002A135F /* ofxSawSynth.cpp in Sources */,
+				F05789BF1C148862002A135F /* ofxAudioEffect.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				F05789C21C148862002A135F /* ofxGranularSynth.cpp in Sources */,
+				F05789C51C148862002A135F /* ofxNoiseSynth.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				F05789C01C148862002A135F /* ofxAudioSynth.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
+				F05789C71C148862002A135F /* ofxSineSynth.cpp in Sources */,
+				F05789C41C148862002A135F /* ofxMicroInput.cpp in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
+				F05789C31C148862002A135F /* ofxGranulateEffect.cpp in Sources */,
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
-				FE0BD73D1B00D5520086F7BF /* ofxDelayEffect.cpp in Sources */,
-				2788D3DB35211527FCA10CCA /* ofxAudioEffect.cpp in Sources */,
-				EAF420394667C4696B4CD131 /* ofxAudioSynth.cpp in Sources */,
-				F7D655384803A0A2520C16E2 /* ofxGranularSynth.cpp in Sources */,
-				FF6864BAFAE4E967DDC2EED8 /* ofxNoiseSynth.cpp in Sources */,
-				77FECDCC87A4122714F66CE3 /* ofxSawSynth.cpp in Sources */,
-				FEF9E42F1B03490F0032A741 /* ofxGranulateEffect.cpp in Sources */,
-				FEC2A5191B021D7600AC29B1 /* ofxMicroInput.cpp in Sources */,
-				696E0D8FAA1F8729AF441F3F /* ofxSineSynth.cpp in Sources */,
-				F733502A9F7CFFF6035A5D61 /* ofxSquareSynth.cpp in Sources */,
+				F05789C11C148862002A135F /* ofxDelayEffect.cpp in Sources */,
+				F05789C81C148862002A135F /* ofxSquareSynth.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +602,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -686,7 +689,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

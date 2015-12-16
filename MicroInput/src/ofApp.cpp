@@ -2,10 +2,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    mic.stop();
-    granu.setBuffer(mic.bufferIntermediate, 199680);
-    mic.addEffect(&granu);
-    mic.play();
+    microphone.stop();
+    granulator.setBuffer(microphone.bufferIntermediate, 199680);
+    //microphone.addEffect(&granulator);
+    microphone.addEffect(&delay);
+    microphone.play();
     ofSetFrameRate(5);
 }
 
@@ -31,8 +32,7 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    granu.setDuration((float)x/(float) ofGetWidth()/2.0);
-    std::cout<< (float)x/(float) ofGetWidth()/2.0 << std::endl;
+    granulator.setDuration((float)x/(float) ofGetWidth()/2.0);
 }
 
 //--------------------------------------------------------------
