@@ -1,5 +1,5 @@
 #include "ofxSineSynth.h"
-
+#include "ofMathConstants.h"
 //--------------------------------------------------------------
 ofxSineSynth::ofxSineSynth(): mTime(0.0), mRate(1.0), mPhaseOffset(0.0),mCurrentSamplePosition(0){
     float temp = 1.0/TABLE_SIZE;

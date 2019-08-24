@@ -9,7 +9,7 @@ ofxWavePlayer::ofxWavePlayer(){
 }
 
 //--------------------------------------------------------------
-ofxWavePlayer::ofxWavePlayer(string path){
+ofxWavePlayer::ofxWavePlayer(std::string path){
     mInitPos = 0;
     mVolume   = 0.9f;
     mPosition = 0;
@@ -42,7 +42,7 @@ samples ofxWavePlayer::getSample(){
 
 
 //--------------------------------------------------------------
-bool ofxWavePlayer::loadWave(string path){
+bool ofxWavePlayer::loadWave(std::string path){
     FILE *fp;
     fp = fopen(path.c_str(),"rb");
     if (fp == NULL){

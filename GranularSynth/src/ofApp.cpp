@@ -1,11 +1,11 @@
 #include "ofApp.h"
-
+#include "ofMath.h"
 //--------------------------------------------------------------
 void ofApp::setup(){
     
     ofSetFrameRate(20);
     
-    GranularSynth.loadWave("../../../data/stereo.wav");
+    GranularSynth.loadWave("../../../data/sound15.wav");
     delay = new ofxDelayEffect(1000, 0.9, 10000);
     GranularSynth.addEffect(delay);
     GranularSynth.init();
@@ -16,7 +16,7 @@ void ofApp::setup(){
     }
     
     gui.setup();
-
+    
     mTogglePlaySound.addListener(this, &ofApp::playCallback);
     mToggleByPassEffect.addListener(this, &ofApp::byPassEffectsCallback);
     mSliderGrainLength.addListener(this, &ofApp::grainLengthCallback);
@@ -34,7 +34,7 @@ void ofApp::setup(){
     gui.add(mSliderMix.setup("Mix", 0.3,0,1));
     gui.add(mSliderDepth.setup("Depth", 0,0,20000));
     gui.add(mToggleByPassEffect.setup("Bypass Effect", false));
-
+    
 }
 
 //--------------------------------------------------------------
@@ -85,7 +85,8 @@ void ofApp::overlapCallback(float& overlap){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+    // remove this line if you want to select grains in a specific region
+    GranularSynth.setInitPosition(ofRandom(10,1000)*increment);
 }
 
 //--------------------------------------------------------------
@@ -101,9 +102,9 @@ void ofApp::draw(){
     j=0;
     for (int i =1 ; i<GranularSynth.musicSize-increment; j++ ,i+=increment) {
         ofLine(j,
-                500+ GranularSynth.music[i]*100.0,
-                j+1,
-                500+ GranularSynth.music[i+increment]*100.0);
+               500+ GranularSynth.music[i]*100.0,
+               j+1,
+               500+ GranularSynth.music[i+increment]*100.0);
     }
     ofNoFill();
     ofRect(GranularSynth.getInitPosition()/(float)increment, 200, GranularSynth.getDuration()/increment, 400);
@@ -112,22 +113,22 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
@@ -139,20 +140,20 @@ void ofApp::mousePressed(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
-
+    
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
+void ofApp::dragEvent(ofDragInfo dragInfo){
+    
 }

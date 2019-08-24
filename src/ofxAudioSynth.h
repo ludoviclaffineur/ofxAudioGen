@@ -10,7 +10,7 @@ public:
     void stop();
     virtual void audioOut(float * output, int bufferSize, int nChannels)=0;
     virtual void addEffect(ofxAudioEffect* effect);
-    vector <ofxAudioEffect*> mEffects;
+    std::vector <ofxAudioEffect*> mEffects;
 protected:
     ofSoundStream soundStream;
 

@@ -3,6 +3,8 @@
 #include "ofxAudioSynth.h"
 #include "ofxGrain.h"
 
+using namespace std;
+
 class Grain{
 public:
     Grain(float* audioFile, int duration, int blank,int initPos, int channels, int musicSize);

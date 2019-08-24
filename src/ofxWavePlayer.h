@@ -5,8 +5,8 @@
 class ofxWavePlayer : public ofxAudioSynth{
 public:
     ofxWavePlayer();
-    ofxWavePlayer(string path);
-    bool loadWave(string path);
+    ofxWavePlayer(std::string path);
+    bool loadWave(std::string path);
     void audioOut(float *output, int bufferSize, int nChannels);
     float* music;
     int musicSize=0;;

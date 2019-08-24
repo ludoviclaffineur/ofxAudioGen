@@ -16,7 +16,7 @@ private:
     unsigned int mIndex;
     float mAlpha;
     float mFreq = 440.0;
-    vector<float> table;
+    std::vector<float> table;
     float mIncrement = (TABLE_SIZE * mFreq)/ 44100.0;
 };
 
